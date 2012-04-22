@@ -51,7 +51,9 @@ public class Money extends Entity{
     }
     
     
-    public double CalculateExchange(Money targetCurrency, double sourceAmount) throws ValidationException{
+    public double CalculateExchangeFromSource(CurrencyCode targetCurrency, double sourceAmount) throws ValidationException{
+        if (targetCurrency == getCode()) return sourceAmount;
+        
         ExchangeRate rate = findRate(targetCurrency);
         
         validateValueNotNull(rate, "Rate must not be null");
@@ -60,11 +62,22 @@ public class Money extends Entity{
         return rate.CalculateExchangeFromSource(sourceAmount);
     }
     
-    private ExchangeRate findRate(Money targetCurrency){
+    public double CalculateExchangeFromTarget(CurrencyCode targetCurrency,double targetAmount) throws ValidationException{
+        if (targetCurrency == getCode()) return targetAmount;
+        
+        ExchangeRate rate = findRate(targetCurrency);
+        
+        validateValueNotNull(rate, "Rate must not be null");
+        
+        
+        return rate.CalculateExchangeFromTarget(targetAmount);
+    }
+    
+    private ExchangeRate findRate(CurrencyCode targetCurrency){
         ExchangeRate result = null;
         
         for(ExchangeRate rate : getRates()){
-            if (rate.getTargetCurrency()!=targetCurrency.getCode()) continue;
+            if (rate.getTargetCurrency()!=targetCurrency) continue;
             result = rate;
             break;
             

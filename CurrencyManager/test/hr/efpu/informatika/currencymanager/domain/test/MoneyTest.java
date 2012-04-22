@@ -72,6 +72,29 @@ public class MoneyTest extends TestCase{
         rateHRK_EUR.setTargetCurrency(CurrencyCode.EUR);
         rateHRK_EUR.setExchange(0.13);
         currency.addRate(rateHRK_EUR);
+        
+        double result = currency.CalculateExchangeFromSource(CurrencyCode.YEN, 100);
+        assertEquals(1409.00,result,0.00);
+        
+        result = currency.CalculateExchangeFromTarget(CurrencyCode.YEN, 100);
+        
+        assertEquals(7.10, result,1.00);
+        
+        result = currency.CalculateExchangeFromSource(CurrencyCode.EUR, 100);
+        assertEquals(13.39, result,1.0);
+        
+        result = currency.CalculateExchangeFromTarget(CurrencyCode.EUR, 100);
+        assertEquals(769.23, result,1.0);
+        
+         result = currency.CalculateExchangeFromSource(CurrencyCode.HRK, 100);
+        assertEquals(100.00, result,1.0);
+        
+        result = currency.CalculateExchangeFromTarget(CurrencyCode.HRK, 100);
+        assertEquals(100.00, result,1.0);
+        
+        
+        
+        
     }
    
 }
