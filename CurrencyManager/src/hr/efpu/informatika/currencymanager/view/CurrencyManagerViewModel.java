@@ -23,7 +23,9 @@ public class CurrencyManagerViewModel {
     private Money  YEN = null;
     private Money  EUR = null;
     
-    
+    /**
+     * Creates the intial application state
+     */
     public CurrencyManagerViewModel(){
         try{
           HRK = new Money();
@@ -49,7 +51,13 @@ public class CurrencyManagerViewModel {
         
     }
     
-     
+    /**
+     * Sets the amount of a currency
+     * @param code code of the currency the amount is set
+     * @param amount decimal amount set
+     * @return list of new amounts to change for each currency
+     * @throws ValidationException 
+     */
     public HashMap<CurrencyCode,String> setAmount(CurrencyCode code, String amount) throws ValidationException{
         final double exchange = Double.parseDouble(amount);
         
@@ -91,6 +99,12 @@ public class CurrencyManagerViewModel {
         return result;
     }
     
+    /**
+     * Sets Exchange rate
+     * @param sourceCode currency to set the exchange rate towards KN
+     * @param amount echange rate
+     * @throws ValidationException 
+     */
     public void setExchange(CurrencyCode sourceCode, String amount) throws ValidationException{
         ExchangeRate rate = null;
         double exchange = 0.00;
@@ -117,6 +131,12 @@ public class CurrencyManagerViewModel {
         rate.setExchange(exchange);
     }
     
+    /**
+     * Creates a basic exchange list for a currency code
+     * @param source
+     * @return list of exchange rates , basic
+     * @throws ValidationException 
+     */
     private ArrayList<ExchangeRate> buildBasicExchanges(CurrencyCode source) throws ValidationException{
         ArrayList<ExchangeRate> result = new ArrayList<ExchangeRate>();
         

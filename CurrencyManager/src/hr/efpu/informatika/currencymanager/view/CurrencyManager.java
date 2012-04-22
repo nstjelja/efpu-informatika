@@ -136,6 +136,14 @@ public class CurrencyManager extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Adds field to the UI
+     * @param defaultValue default field value
+     * @param entry currency code and field label
+     * @param masterPanel panel to place the field into
+     * @param focusAdapter event handler on focus changes
+     * @return  created field
+     */
     private JTextField addField(String defaultValue, Map.Entry<CurrencyCode,String> entry, JPanel masterPanel, FocusAdapter focusAdapter){
           JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             JTextField field = new JTextField();
