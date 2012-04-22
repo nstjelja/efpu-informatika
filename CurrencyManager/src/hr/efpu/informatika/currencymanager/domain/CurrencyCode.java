@@ -17,7 +17,7 @@ public enum CurrencyCode {
     /**
      * Croatian Kuna
      */
-    HR,
+    HRK,
     
     /**
      * European Union Euro

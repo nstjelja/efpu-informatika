@@ -5,7 +5,6 @@
 package hr.efpu.informatika.currencymanager.domain;
 
 import java.util.UUID;
-import sun.security.util.Debug;
 
 /**
  * Base entity class for all Domain entities
@@ -31,14 +30,7 @@ public abstract class Entity {
         id = value;
     }
     
-    /**
-     * Validates that value cannot be null
-     * @param value Object validated not to be null
-     * @throws ValidationException 
-     */
-    protected void validateValueNotNull(Object value) throws ValidationException{
-        if (value == null) throw new ValidationException("Value must not be null");
-    }
+  
     
     /**
      * Creates a new entity with a set ID
@@ -50,6 +42,44 @@ public abstract class Entity {
         catch(ValidationException ex){
             System.err.println(ex.getMessage());
         }
+    }
+    
+        /**
+     * Validates that value cannot be null
+     * @param value Object validated not to be null
+     * @throws ValidationException 
+     */
+    protected void validateValueNotNull(Object value) throws ValidationException{
+        if (value == null) throw new ValidationException("Value must not be null");
+    }
+    
+      /**
+     * Validates that value cannot be null
+     * @param value Object validated not to be null
+     * @param msg String message to throw
+     * @throws ValidationException 
+     */
+    protected void validateValueNotNull(Object value, String msg) throws ValidationException{
+        if (value == null) throw new ValidationException(msg);
+    }
+    
+    /**
+     * Validates that value cannot be zero
+     * @param value to validate not being zero
+     * @throws ValidationException 
+     */
+    protected void validateValueNotZero(double value) throws ValidationException{
+          if (value == 0.00) throw new ValidationException("Value cannot be zero");
+    }
+    
+     /**
+     * Validates that value cannot be zero
+     * @param value to validate not being zero
+     * @param msg to send
+     * @throws ValidationException 
+     */
+    protected void validateValueNotZero(double value, String msg) throws ValidationException{
+          if (value == 0.00) throw new ValidationException(msg);
     }
    
 }
