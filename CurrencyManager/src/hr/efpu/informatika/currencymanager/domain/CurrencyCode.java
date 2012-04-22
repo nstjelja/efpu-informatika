@@ -22,5 +22,12 @@ public enum CurrencyCode {
     /**
      * European Union Euro
      */
-    EUR
+    EUR,
+    
+    /**
+     * United States Dollar
+     */
+    USD
+    
+    
 }

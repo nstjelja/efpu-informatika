@@ -4,6 +4,8 @@
  */
 package hr.efpu.informatika.currencymanager;
 
+import hr.efpu.informatika.currencymanager.view.CurrencyManager;
+
 /**
  *
  * @author nikola
@@ -15,6 +17,11 @@ public class Program {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Nikola je zakon");
+         java.awt.EventQueue.invokeLater(new Runnable() {
+
+            public void run() {
+                new CurrencyManager().setVisible(true);
+            }
+        });
     }
 }
